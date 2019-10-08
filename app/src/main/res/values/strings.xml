@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PicoYPlacaApp</string>
+    <string name="nav_header_desc">Navigation Header</string>
+    <string name="nav_header_title">Pico y Placa APP</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="no_te_arriesgues_de_ser_multado_ven_y_consulta_la_placa_de_tu_veh_culo">No te arriesgues de ser multado, ven y consulta la placa de tu vehículo.</string>
+    <string name="inicio">Inicio</string>
+</resources>
