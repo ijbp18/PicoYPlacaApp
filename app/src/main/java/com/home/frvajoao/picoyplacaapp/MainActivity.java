@@ -1,5 +1,6 @@
 package com.home.frvajoao.picoyplacaapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +14,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.home.frvajoao.picoyplacaapp.consultarPlaca.FormValidarPlacaActivity;
+import com.home.frvajoao.picoyplacaapp.listarBitacora.FormBitacoraActivty;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -68,18 +71,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void signOut() {
 
-        AlertDialog confirmDialog = new AlertDialog.Builder(this)
-                .setTitle("Salir")
-                .setMessage("Desea salir de Pico y Placa APP?")
-                .setNegativeButton("CANCELAR", (dialog, which) -> dialog.dismiss())
-                .setPositiveButton("ACEPTAR", (dialog, which) -> {
+        showAlert("ATENCIÓN", "Desea salir de Pico y Placa APP", (dialog, which) -> {
+            dialog.dismiss();
+            finish();
 
+        }, (dialog, which) -> dialog.dismiss());
 
-                    finish();
-                }).create();
-
-
-        confirmDialog.show();
+//        AlertDialog confirmDialog = new AlertDialog.Builder(this)
+//                .setTitle("Salir")
+//                .setMessage("Desea salir de Pico y Placa APP?")
+//                .setNegativeButton("CANCELAR", (dialog, which) -> dialog.dismiss())
+//                .setPositiveButton("ACEPTAR", (dialog, which) -> {
+//
+//
+//                    finish();
+//                }).create();
+//
+//
+//        confirmDialog.show();
 
     }
 
@@ -129,6 +138,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private void showAlert(String title, String message, DialogInterface.OnClickListener actionPositive, DialogInterface.OnClickListener actionNegative) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
+        builder.setCancelable(false);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("ACEPTAR", actionPositive);
+        builder.setNegativeButton("CANCELAR", actionNegative);
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
 
